@@ -1,28 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define ll long long
+const int MOD = 1e9 + 7;
+const int MAX = 500;
 
 int main()
 {
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+
     int n;
     cin >> n;
-    vector<int> vt(n);
-    for (int i = 0; i < n; i++)
-        cin >> vt[i];
-    sort(vt.begin(), vt.end());
-    int min = vt[1] - vt[0];
-    int count = 1;
-    for (int i = 1; i < n - 1; i++)
+    int res = 0;
+    int F[10] = {1000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
+    for (int i = 0; i < 10; i++)
     {
-        if (vt[i + 1] - vt[i] == min)
+        if (n >= F[i])
         {
-            count++;
+            res += n / F[i];
+            n = n % F[i];
         }
-        if (vt[i + 1] - vt[i] < min)
+        if (n == 0)
         {
-            min = vt[i + 1] - vt[i];
-            count = 1;
+            break;
         }
     }
-    cout << min << " " << count;
-    return 0;
+    cout << res;
 }
