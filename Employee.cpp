@@ -1,56 +1,19 @@
-#include <iostream>
-using namespace std;
+#include "Person.cpp"
 
-class Employee
+class Employee : public Person
 {
 private:
-    int id;
-    string firstName;
-    string lastName;
     int salary;
 
 public:
-    Employee(int id, string firstName, string lastName, int salary)
-    {
-        this->id = id;
-        this->firstName = firstName;
-        this->lastName = lastName;
-        this->salary = salary;
-    }
-    void setId(int id)
-    {
-        this->id = id;
-    }
-    int getId()
-    {
-        return id;
-    }
-    void setFirstName(string firstName)
-    {
-        this->firstName = firstName;
-    }
-    string getFirstName()
-    {
-        return firstName;
-    }
-    void setLastName(string lastName)
-    {
-        this->lastName = lastName;
-    }
-    string getLastName()
-    {
-        return lastName;
-    }
-    void setSalary(int salary)
+    Employee(string name, string address, int salary) : Person(name, address)
     {
         this->salary = salary;
     }
-    int getSalary()
+    void display()
     {
-        return salary;
-    }
-    string getFullName()
-    {
-        return firstName + " " + lastName;
+        cout << "Employee name: " << Person::getName() << endl;
+        cout << "Employee address: " << Person::getAddress() << endl;
+        cout << "Employee salary: " << salary << endl;
     }
 };
